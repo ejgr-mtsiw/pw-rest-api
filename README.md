@@ -1,2 +1,4 @@
 # pw-rest-api
-Programação Web - Projeto Final - REST API
+Web Programming - Final Project - REST API
+
+Documentation: https://github.com/ejgr-mtsiw/pw-website/wiki/REST-API
