@@ -11,6 +11,11 @@ interface ContractRepository
     public function findAll(): array;
 
     /**
+     * @return Contract[]
+     */
+    public function findAllByGroupId(array $groups): array;
+
+    /**
      * @param int $id
      * @return Contract
      * @throws ContractNotFoundException

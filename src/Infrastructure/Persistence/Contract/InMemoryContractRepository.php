@@ -15,6 +15,11 @@ class InMemoryContractRepository implements ContractRepository
     private $contracts;
 
     /**
+     * @var int
+     */
+    private $lastId = 0;
+
+    /**
      * InMemoryContractRepository constructor.
      *
      * @param array|null $contracts
@@ -22,11 +27,13 @@ class InMemoryContractRepository implements ContractRepository
     public function __construct(array $contracts = null)
     {
         $this->contracts = $contracts ?? [
-            1 => new Contract(1, 171906, "Escola 171906", 286571, 115, 7, '2020-02-06', '2020-01-13', 550, 'concelho A', 'distrito A'),
-            2 => new Contract(2, 171906, 'Escola 171906', 286575, 116, 7, '2020-08-31', '2020-01-13', 550, 'concelho A', 'distrito A'),
-            3 => new Contract(3, 171906, 'Escola 171906', 286576, 117, 7, '2020-08-31', '2020-01-13', 550, 'concelho A', 'distrito A'),
-            4 => new Contract(3, 171906, 'Escola 171906', 286585, 119, 7, '2020-08-31', '2020-01-13', 420, 'concelho A', 'distrito A'),
+            286571 => new Contract(286571, 171906, "Escola 171906", 115, 7, '2020-02-06', '2020-01-13', 550, 'concelho A', 'distrito A', 'ITED/ITUR', 'Licenciatura/Bacharelato/Especialização Tecnológica'),
+            286575 => new Contract(286575, 171906, 'Escola 171906', 116, 7, '2020-08-31', '2020-01-13', 550, 'concelho A', 'distrito A', 'Mediadora entre Escola e Família', 'Licenciatura em Psicologia e com experiência em Mediação de Conflitos'),
+            286576 => new Contract(286576, 171906, 'Escola 171906', 117, 7, '2020-08-31', '2020-01-13', 550, 'concelho A', 'distrito A', 'EFA B2+B3 - TIC; EFA B3 - TIC', 'Formação Superior na área de Informática'),
+            286585 => new Contract(286585, 171906, 'Escola 171906', 119, 7, '2020-08-31', '2020-01-13', 420, 'concelho A', 'distrito A', 'EFA NS (B +C) - CP; Formador Centro Qualifica', 'Formação superior na área de Gestão de Empresas '),
         ];
+
+        $this->lastId = 4;
     }
 
     /**
@@ -40,12 +47,29 @@ class InMemoryContractRepository implements ContractRepository
     /**
      * {@inheritdoc}
      */
-    public function findContractOfId(int $id): Contract
+    public function findAllByGroupId(array $groups): array
     {
-        if (!isset($this->contracts[$id])) {
-            throw new ContractNotFoundException();
+        $contracts = [];
+        foreach ($this->contracts as $contract) {
+            if (in_array($contract->getRecruitmentGroup(), $groups)) {
+                $contracts[] = $contract;
+            }
         }
 
-        return $this->contracts[$id];
+        return array_values($contracts);
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function findContractOfId(int $id): Contract
+    {
+        foreach ($this->contracts as $contract) {
+            if ($contract->getId() == $id) {
+                return $contract;
+            }
+        }
+
+        throw new ContractNotFoundException();
     }
 }

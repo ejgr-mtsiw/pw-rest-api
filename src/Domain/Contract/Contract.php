@@ -25,11 +25,6 @@ class Contract implements JsonSerializable
     /**
      * @var int
      */
-    private $sigrheContractCode;
-
-    /**
-     * @var int
-     */
     private $contractNumber;
 
     /**
@@ -63,10 +58,19 @@ class Contract implements JsonSerializable
     private $district;
 
     /**
+     * @var string
+     */
+    private $classProject;
+
+    /**
+     * @var string
+     */
+    private $qualifications;
+
+    /**
      * @param int|null  $id
      * @param int    $schoolCode
      * @param string    $schoolName
-     * @param int    $sigrheContractCode
      * @param int    $contractNumber
      * @param int    $nHoursPerWeek
      * @param string    $contractEndDate
@@ -74,13 +78,26 @@ class Contract implements JsonSerializable
      * @param int    $recruitmentGroup
      * @param string    $county
      * @param string    $district
+     * @param string    $classProject
+     * @param string    $qualifications
      */
-    public function __construct(?int $id, int $schoolCode, string $schoolName, int $sigrheContractCode, int $contractNumber, int $nHoursPerWeek, string $contractEndDate, string $applicationDeadline, int $recruitmentGroup, string $county, string $district)
-    {
+    public function __construct(
+        ?int $id,
+        int $schoolCode,
+        string $schoolName,
+        int $contractNumber,
+        int $nHoursPerWeek,
+        string $contractEndDate,
+        string $applicationDeadline,
+        int $recruitmentGroup,
+        string $county,
+        string $district,
+        string $classProject,
+        string $qualifications
+    ) {
         $this->id = $id;
         $this->schoolCode = $schoolCode;
         $this->schoolName = $schoolName;
-        $this->sigrheContractCode = $sigrheContractCode;
         $this->contractNumber = $contractNumber;
         $this->nHoursPerWeek = $nHoursPerWeek;
         $this->contractEndDate = $contractEndDate;
@@ -88,6 +105,8 @@ class Contract implements JsonSerializable
         $this->recruitmentGroup = $recruitmentGroup;
         $this->county = $county;
         $this->district = $district;
+        $this->classProject = $classProject;
+        $this->qualifications = $qualifications;
     }
 
     /**
@@ -96,6 +115,16 @@ class Contract implements JsonSerializable
     public function getId(): ?int
     {
         return $this->id;
+    }
+
+    /**
+     * @param int $id
+     * 
+     * @return void
+     */
+    public function setId(int $id)
+    {
+        $this->id = $id;
     }
 
     /**
@@ -112,14 +141,6 @@ class Contract implements JsonSerializable
     public function getSchoolName(): string
     {
         return $this->schoolName;
-    }
-
-    /**
-     * @return int
-     */
-    public function getSigrheContractCode(): int
-    {
-        return $this->sigrheContractCode;
     }
 
     /**
@@ -179,6 +200,22 @@ class Contract implements JsonSerializable
     }
 
     /**
+     * @return string
+     */
+    public function getClassProject(): string
+    {
+        return $this->classProject;
+    }
+
+    /**
+     * @return string
+     */
+    public function getQualifications(): string
+    {
+        return $this->qualifications;
+    }
+
+    /**
      * @return array
      */
     public function jsonSerialize()
@@ -187,7 +224,6 @@ class Contract implements JsonSerializable
             'id' => $this->id,
             'schoolCode' => $this->schoolCode,
             'schoolName' => $this->schoolName,
-            'sigrheContractCode' => $this->sigrheContractCode,
             'contractNumber' => $this->contractNumber,
             'nHoursPerWeek' => $this->nHoursPerWeek,
             'contractEndDate' => $this->contractEndDate,
@@ -195,6 +231,8 @@ class Contract implements JsonSerializable
             'recruitmentGroup' => $this->recruitmentGroup,
             'county' => $this->county,
             'district' => $this->district,
+            'classProject' => $this->classProject,
+            'qualifications' => $this->qualifications,
         ];
     }
 }

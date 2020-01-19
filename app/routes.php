@@ -15,7 +15,7 @@ return function (App $app) {
     });
 
     $app->group('/api', function (Group $group) {
-        $group->get('', ListContractsAction::class);
-        $group->get('/{id}', ViewContractAction::class);
+        $group->get('/contracts[/groups/{groups:.*}]', ListContractsAction::class);
+        $group->get('/contract/{id}', ViewContractAction::class);
     });
 };
