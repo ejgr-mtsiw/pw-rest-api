@@ -75,7 +75,7 @@ class Contract implements JsonSerializable
      * @param int    $nHoursPerWeek
      * @param string    $contractEndDate
      * @param string    $applicationDeadline
-     * @param int    $recruitmentGroup
+     * @param string    $recruitmentGroup
      * @param string    $county
      * @param string    $district
      * @param string    $classProject
@@ -89,7 +89,7 @@ class Contract implements JsonSerializable
         int $nHoursPerWeek,
         string $contractEndDate,
         string $applicationDeadline,
-        int $recruitmentGroup,
+        string $recruitmentGroup,
         string $county,
         string $district,
         string $classProject,

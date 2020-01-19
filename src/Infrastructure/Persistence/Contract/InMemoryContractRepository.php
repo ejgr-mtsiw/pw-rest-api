@@ -27,10 +27,10 @@ class InMemoryContractRepository implements ContractRepository
     public function __construct(array $contracts = null)
     {
         $this->contracts = $contracts ?? [
-            286571 => new Contract(286571, 171906, "Escola 171906", 115, 7, '2020-02-06', '2020-01-13', 550, 'concelho A', 'distrito A', 'ITED/ITUR', 'Licenciatura/Bacharelato/Especialização Tecnológica'),
-            286575 => new Contract(286575, 171906, 'Escola 171906', 116, 7, '2020-08-31', '2020-01-13', 550, 'concelho A', 'distrito A', 'Mediadora entre Escola e Família', 'Licenciatura em Psicologia e com experiência em Mediação de Conflitos'),
-            286576 => new Contract(286576, 171906, 'Escola 171906', 117, 7, '2020-08-31', '2020-01-13', 550, 'concelho A', 'distrito A', 'EFA B2+B3 - TIC; EFA B3 - TIC', 'Formação Superior na área de Informática'),
-            286585 => new Contract(286585, 171906, 'Escola 171906', 119, 7, '2020-08-31', '2020-01-13', 420, 'concelho A', 'distrito A', 'EFA NS (B +C) - CP; Formador Centro Qualifica', 'Formação superior na área de Gestão de Empresas '),
+            286571 => new Contract(286571, 171906, "Escola 171906", 115, 7, '2020-02-06', '2020-01-13', '550', 'concelho A', 'distrito A', 'ITED/ITUR', 'Licenciatura/Bacharelato/Especialização Tecnológica'),
+            286575 => new Contract(286575, 171906, 'Escola 171906', 116, 7, '2020-08-31', '2020-01-13', '550', 'concelho A', 'distrito A', 'Mediadora entre Escola e Família', 'Licenciatura em Psicologia e com experiência em Mediação de Conflitos'),
+            286576 => new Contract(286576, 171906, 'Escola 171906', 117, 7, '2020-08-31', '2020-01-13', '550', 'concelho A', 'distrito A', 'EFA B2+B3 - TIC; EFA B3 - TIC', 'Formação Superior na área de Informática'),
+            286585 => new Contract(286585, 171906, 'Escola 171906', 119, 7, '2020-08-31', '2020-01-13', '420', 'concelho A', 'distrito A', 'EFA NS (B +C) - CP; Formador Centro Qualifica', 'Formação superior na área de Gestão de Empresas '),
         ];
 
         $this->lastId = 4;
