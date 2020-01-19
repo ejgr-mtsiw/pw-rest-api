@@ -14,6 +14,18 @@ return function (ContainerBuilder $containerBuilder) {
                 'path' => __DIR__ . '/../logs/app.log',
                 'level' => Logger::DEBUG,
             ],
+            ,
+            // Database settings
+            'db' => [
+                'driver' => 'mysql',
+                'host' => 'localhost',
+                'database' => 'database',
+                'username' => 'username',
+                'password' => 'password',
+                'charset' => 'utf8',
+                //'collation' => 'utf8',
+                'prefix' => '',
+            ],
         ],
     ]);
 };

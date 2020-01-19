@@ -17,6 +17,7 @@
     ],
     "require": {
         "php": "^7.3",
+        "illuminate/database": "^6.4",
         "monolog/monolog": "^2.0",
         "php-di/php-di": "^6.0",
         "slim/flash": "^0.4",

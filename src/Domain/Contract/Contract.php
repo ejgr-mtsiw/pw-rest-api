@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace App\Domain\Contract;
@@ -234,5 +235,29 @@ class Contract implements JsonSerializable
             'classProject' => $this->classProject,
             'qualifications' => $this->qualifications,
         ];
+    }
+
+    /**
+     * @param object
+     * @return Contract
+     */
+    public static function fromObject(object $row)
+    {
+        $contract = new Contract(
+            $row->id,
+            $row->school_code,
+            $row->school_name,
+            $row->n_contract,
+            $row->n_hours_per_week,
+            $row->contract_end_date,
+            $row->application_deadline,
+            $row->recruitment_group,
+            $row->county,
+            $row->district,
+            $row->class_project,
+            $row->qualifications
+        );
+
+        return $contract;
     }
 }
