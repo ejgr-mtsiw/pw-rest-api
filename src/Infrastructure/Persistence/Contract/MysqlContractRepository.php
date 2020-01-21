@@ -20,7 +20,7 @@ class MysqlContractRepository implements ContractRepository
      */
     public function findAll(): array
     {
-        $rows = DB::table('contracts')->get();
+        $rows = DB::table('contracts')->where('expired','=','0')->get();
 
         $contracts = [];
         foreach ($rows as $row) {
@@ -36,6 +36,7 @@ class MysqlContractRepository implements ContractRepository
     public function findAllByGroupId(array $groups): array
     {
         $rows = DB::table('contracts')
+            ->where('expired','=','0')
             ->whereIn('recruitment_group', $groups)
             ->get();
 
