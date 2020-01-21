@@ -10,8 +10,9 @@ use Slim\Interfaces\RouteCollectorProxyInterface as Group;
 
 return function (App $app) {
     $app->get('/', function (Request $request, Response $response) {
-        $response->getBody()->write('Hello world!');
-        return $response;
+        return $response
+            ->withHeader('Location', '/html5/index.html')
+            ->withStatus(301);
     });
 
     $app->group('/api', function (Group $group) {
