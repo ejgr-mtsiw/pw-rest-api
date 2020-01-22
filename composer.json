@@ -20,10 +20,8 @@
         "illuminate/database": "^6.4",
         "monolog/monolog": "^2.0",
         "php-di/php-di": "^6.0",
-        "slim/flash": "^0.4",
         "slim/psr7": "^1.0",
-        "slim/slim": "^4.0",
-        "slim/twig-view": "^3.0"
+        "slim/slim": "^4.0"
     },
     "config": {
         "process-timeout": 0,
